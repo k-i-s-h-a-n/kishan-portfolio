@@ -1,0 +1,95 @@
+ 
+ {% extends 'website/base.html' %}
+ {% load static %}
+ {% block content %}
+     
+ <!-- Contact Start -->
+ <div class="container-xxl pb-5" id="contact">
+    <div class="container py-5">
+        <div class="row g-5 mb-5 wow fadeInUp" >
+            <div class="col-lg-6">
+                <h1 class="display-5 mb-0">Let's Work Together</h1>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <a class="btn btn-primary py-3 px-5" href="">Say Hello</a>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-5 col-md-6 wow fadeInUp" >
+                <p class="mb-2">Currently Living</p>
+                <h3 class="fw-bold">Bhubaneswar, ODISHA, INDIA</h3>
+                <hr class="w-100">
+                <p class="mb-2">Call me:</p>
+                <h3 class="fw-bold">+91 8340562279</h3>
+                <hr class="w-100">
+                <p class="mb-2">Mail me:</p>
+                <h3 class="fw-bold">kishfan86@gmail.com</h3>
+                <hr class="w-100">
+                <p class="mb-2">Follow me:</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-primary me-2" href="https://twitter.com/i/flow/login?redirect_after_login=%2Fkkcodr"><i class="fab fa-twitter"></i></a>
+                    {% comment %} <a class="btn btn-square btn-primary me-2" href=""><i class="fab fa-facebook-f"></i></a> {% endcomment %}
+                    <a class="btn btn-square btn-primary me-2" href="https://www.instagram.com/kishan_kumarr/"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-square btn-primary me-2" href="https://www.linkedin.com/in/kishan-kumar-a72b36170/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            {% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <div class="alert alert-success">
+                <div class="alert-box">
+                    {{ message }}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <script>
+        // Automatically hide success messages after 3 seconds
+        setTimeout(function() {
+            document.querySelectorAll('.alert-success').forEach(function(successMessage) {
+                successMessage.style.display = 'none';
+            });
+        }, 2000);
+    </script>
+{% endif %}
+            <div class="col-lg-7 col-md-6 wow fadeInUp">
+                <form action="{% url 'send_msg' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required> 
+                                <label for="subject">Subject</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" name="message" placeholder="Leave a message here" id="message" style="height: 100px" required></textarea>
+                                <label for="message">Message</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+{% endblock content %}
