@@ -4,4 +4,5 @@ from kishan.views import *
 
 urlpatterns = [
     path("profile/",profile,name="profile"),
+    path("profile/send_msg",send_msg,name="send_msg"),
 ]
